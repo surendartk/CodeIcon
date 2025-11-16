@@ -1,0 +1,44 @@
+<div class="login-container">
+  <h2>Login</h2>
+
+  <form (ngSubmit)="login()">
+    <!-- Username or Email -->
+    <div class="mb-2">
+      <label for="login">Username or Email</label>
+      <input
+        [(ngModel)]="loginForm.login"
+        name="login"
+        id="login"
+        placeholder="Username or Email"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <!-- Password -->
+    <div class="mb-2">
+      <label for="password">Password</label>
+      <input
+        [(ngModel)]="loginForm.password"
+        name="password"
+        id="password"
+        type="password"
+        placeholder="Password"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <button class="btn btn-primary w-100" type="submit">Login</button>
+
+    <!-- Backend message -->
+    <div *ngIf="errorMessage || successMessage" class="mt-2">
+      <div *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="text-success">
+        {{ successMessage }}
+      </div>
+    </div>
+  </form>
+
+  <p class="mt-3">No account? <a routerLink="/register">Register</a></p>
+</div>
