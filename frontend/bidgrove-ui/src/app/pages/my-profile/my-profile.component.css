@@ -1,115 +1,108 @@
-/* Container Styling */
+/* -----------------------------------
+   Overall Page Layout
+----------------------------------- */
 .profile-container {
-  max-width: 700px; /* increased width for larger screens */
-  margin: 50px auto;
-  padding: 25px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0 10px;
 }
 
-/* Heading */
 .profile-container h3 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 25px;
   font-weight: 600;
+  text-align: center;
 }
 
-/* Card Styling */
-.profile-container .card {
-  background: #fff;
+/* -----------------------------------
+   Card / Box Design
+----------------------------------- */
+.card {
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  padding: 30px;
-  transition: transform 0.2s ease-in-out;
+  border: 1px solid #d8d8d8;
+  background: #ffffff;
+  padding: 20px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
+  transition: 0.2s ease;
 }
 
-.profile-container .card:hover {
-  transform: translateY(-4px);
+.card:hover {
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.12);
 }
 
-/* Labels */
-.profile-container label {
-  font-weight: 500;
-  color: #444;
-  margin-bottom: 5px;
+/* -----------------------------------
+   Label and Input Alignment
+----------------------------------- */
+label {
+  font-weight: 600;
+  margin-bottom: 4px;
   display: block;
 }
 
-/* Inputs */
-.profile-container input.form-control {
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  padding: 10px 12px;
-  font-size: 15px;
-  transition: border-color 0.2s;
+.form-control {
   width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #cfcfcf;
+  font-size: 15px;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
 }
 
-.profile-container input.form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
-  outline: none;
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 5px rgba(13, 110, 253, 0.3);
 }
 
-/* Buttons */
-.profile-container button {
-  border-radius: 8px;
-  font-weight: 500;
-  transition: all 0.2s;
+/* -----------------------------------
+   Profile Static View Styles
+----------------------------------- */
+.card p {
+  margin-bottom: 6px;
+  font-size: 15px;
 }
 
-.profile-container .btn-primary {
-  background-color: #007bff;
-  border: none;
-}
-.profile-container .btn-primary:hover {
-  background-color: #0056b3;
+.card strong {
+  color: #444;
 }
 
-.profile-container .btn-success {
-  background-color: #28a745;
-  border: none;
-}
-.profile-container .btn-success:hover {
-  background-color: #1e7e34;
-}
-
-.profile-container .btn-warning {
-  background-color: #ffc107;
-  border: none;
-  color: #212529;
-}
-.profile-container .btn-warning:hover {
-  background-color: #e0a800;
+/* -----------------------------------
+   Success / Error Message
+----------------------------------- */
+.text-success {
+  margin-top: 5px;
+  font-weight: 600;
 }
 
-.profile-container .btn-secondary {
-  background-color: #6c757d;
-  border: none;
-}
-.profile-container .btn-secondary:hover {
-  background-color: #565e64;
+.text-danger {
+  margin-top: 5px;
+  font-weight: 600;
 }
 
-/* Success and Error messages */
-.profile-container .text-success,
-.profile-container .text-danger {
-  font-weight: 500;
+/* -----------------------------------
+   Buttons Styling
+----------------------------------- */
+button.btn {
+  padding: 8px 18px;
   font-size: 14px;
-  margin-top: 8px;
+  border-radius: 6px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 992px) {
-  .profile-container {
-    max-width: 600px;
-    padding: 20px;
-  }
+.btn-primary {
+  background: #0d6efd;
 }
 
-@media (max-width: 768px) {
-  .profile-container {
-    max-width: 90%;
-    padding: 15px;
-  }
+.btn-warning {
+  background: #f0ad4e;
+}
+
+.btn-success {
+  background: #28a745;
+}
+
+.btn-secondary {
+  background: #6c757d;
+}
+
+/* Align buttons neatly */
+.card button {
+  min-width: 120px;
 }

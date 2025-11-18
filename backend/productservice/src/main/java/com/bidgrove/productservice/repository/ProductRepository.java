@@ -1,0 +1,10 @@
+package com.bidgrove.productservice.repository;
+
+import com.bidgrove.productservice.model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface ProductRepository extends JpaRepository<Product, Long> {
+
+    List<Product> findByUserId(Long userId);  // For showing a user's own products
+}

@@ -10,6 +10,10 @@ import { UserHomeComponent } from './components/user-home/user-home.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
+import { MyProductsComponent } from './pages/my-products/my-products.component';
+import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
+import { AllProductsComponent } from './pages/all-products/all-products.component';
+import { ProductListComponent } from './pages/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,10 @@ import { MyProfileComponent } from './pages/my-profile/my-profile.component';
     AdminHomeComponent,
     NavbarComponent,
     MyProfileComponent,
+    MyProductsComponent,
+    MyOrdersComponent,
+    AllProductsComponent,
+    ProductListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   bootstrap: [AppComponent],

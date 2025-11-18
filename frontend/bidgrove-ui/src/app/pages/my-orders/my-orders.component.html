@@ -1,0 +1,35 @@
+<div class="my-orders">
+  <h3 class="section-title">My Orders / My Bids</h3>
+
+  <div *ngIf="loading" class="loading">Loading...</div>
+  <div *ngIf="error" class="text-danger">{{ error }}</div>
+  <div *ngIf="orders.length === 0 && !loading" class="no-orders">No orders found</div>
+
+  <div class="order-card" *ngFor="let p of orders">
+    
+    <div class="order-left">
+      <h4 class="product-name">{{ p.name }}</h4>
+      <p class="product-desc">{{ p.description }}</p>
+      <p class="time-info">
+        <strong>Start:</strong> {{ p.startDateTime | date:'short' }} <br>
+        <strong>End:</strong> {{ p.endDateTime | date:'short' }}
+      </p>
+    </div>
+
+    <div class="order-right">
+      <p class="price-info">
+        <strong>Current Price:</strong> ₹{{ p.finalPrice ?? p.startPrice }}
+      </p>
+
+      <div class="my-bids-box">
+        <strong>My Bids:</strong>
+        <div class="bid-list">
+          <span class="bid-item" *ngFor="let b of (p.bids || [])">
+            ₹{{ b.amount }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,44 +1,59 @@
 <app-navbar></app-navbar>
 
 <div class="home-wrapper">
-  <!-- Sidebar -->
+  <!-- LEFT MENU -->
   <div class="sidebar">
     <h3 class="sidebar-title">Menu</h3>
     <ul class="sidebar-menu">
-      <li
-        (click)="setActive('profile')"
-        [class.active]="activeTab === 'profile'"
-      >
-        My Profile
-      </li>
-      <li
-        (click)="setActive('products')"
-        [class.active]="activeTab === 'products'"
-      >
-        My Products
-      </li>
-      <li (click)="setActive('orders')" [class.active]="activeTab === 'orders'">
-        My Orders
-      </li>
+      <li (click)="setActive('profile')" [class.active]="activeTab === 'profile'">My Profile</li>
+      <li (click)="setActive('products')" [class.active]="activeTab === 'products'">My Products</li>
+      <li (click)="setActive('orders')" [class.active]="activeTab === 'orders'">My Orders</li>
+      <li (click)="setActive('home')" [class.active]="activeTab === 'home'">All Products (Bid)</li>
     </ul>
   </div>
 
-  <div class="home-content">
-    <h2 class="welcome-text">Welcome, {{ user?.username }}</h2>
+  <!-- RIGHT SIDE CONTENT -->
+  <div class="right-content">
 
-    <!-- Load MyProfileComponent dynamically when 'profile' tab is active -->
     <ng-container *ngIf="activeTab === 'profile'">
       <app-my-profile></app-my-profile>
     </ng-container>
 
-    <div *ngIf="activeTab === 'products'" class="content-card">
-      <h4>My Products</h4>
-      <p>Here you can see and manage your products.</p>
-    </div>
+    <ng-container *ngIf="activeTab === 'products'">
+      <app-my-products></app-my-products>
+    </ng-container>
 
-    <div *ngIf="activeTab === 'orders'" class="content-card">
-      <h4>My Orders</h4>
-      <p>Check your orders and track delivery status.</p>
-    </div>
+    <ng-container *ngIf="activeTab === 'orders'">
+      <app-my-orders></app-my-orders>
+    </ng-container>
+
+    <ng-container *ngIf="activeTab === 'home'">
+      <h3>All Active Products</h3>
+
+      <div class="product-grid">
+        <div class="product-card" *ngFor="let p of allProducts">
+          <h4>{{ p.name }}</h4>
+          <p>{{ p.description }}</p>
+
+          <p><strong>Start Price:</strong> ₹{{ p.startPrice }}</p>
+          <p><strong>Last Bid:</strong> {{ p.finalPrice ?? '-' }}</p>
+
+          <div class="time-box">
+            <span><strong>Start:</strong> {{ p.startDateTime | date:'short' }}</span>
+            <span><strong>End:</strong> {{ p.endDateTime | date:'short' }}</span>
+          </div>
+
+          <div *ngIf="isActive(p.startDateTime, p.endDateTime); else closed">
+            <input type="number" class="bid-input" [(ngModel)]="p.myBid" />
+            <button class="btn-bid" (click)="placeBid(p)">Place Bid</button>
+          </div>
+
+          <ng-template #closed>
+            <p class="closed-text">⛔ Bidding Closed</p>
+          </ng-template>
+        </div>
+      </div>
+    </ng-container>
+
   </div>
 </div>

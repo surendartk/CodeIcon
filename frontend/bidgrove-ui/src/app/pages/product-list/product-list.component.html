@@ -1,0 +1,25 @@
+<div class="products-page">
+  <h3>All Products</h3>
+
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error" class="text-danger">{{ error }}</div>
+
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let p of products">
+      <h4>{{ p.name }}</h4>
+      <p>{{ p.description }}</p>
+      <p><small>Start: {{ p.startDateTime | date:'short' }}</small></p>
+      <p><small>End: {{ p.endDateTime | date:'short' }}</small></p>
+      <p><strong>Current Price:</strong> {{ p.finalPrice ?? p.startPrice }}</p>
+
+      <div *ngIf="isBiddable(p)" class="bid-area">
+        <input type="number" [(ngModel)]="p.myBid" placeholder="Your bid" class="form-control" />
+        <button (click)="placeBid(p)" class="btn btn-primary mt-2">Place Bid</button>
+      </div>
+
+      <div *ngIf="!isBiddable(p)" class="mt-2 text-muted">
+        Bidding closed / not started
+      </div>
+    </div>
+  </div>
+</div>

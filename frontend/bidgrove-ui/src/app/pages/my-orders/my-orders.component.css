@@ -1,0 +1,78 @@
+.my-orders {
+  padding: 1rem;
+}
+
+.section-title {
+  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.loading,
+.no-orders {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.order-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.order-left,
+.order-right {
+  flex: 1;
+}
+
+.product-name {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.product-desc {
+  margin: 0.3rem 0;
+  color: #555;
+}
+
+.time-info {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.price-info {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.my-bids-box {
+  background: #f5faff;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #d0e7ff;
+}
+
+.bid-list {
+  margin-top: 0.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.bid-item {
+  background: #d6eaff;
+  color: #004c99;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}

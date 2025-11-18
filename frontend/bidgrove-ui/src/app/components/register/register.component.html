@@ -1,7 +1,9 @@
 <div class="register-container">
   <h2>Register</h2>
 
-  <form (ngSubmit)="register()">
+  <form #regForm="ngForm" (ngSubmit)="register()">
+
+    <!-- USERNAME -->
     <div class="mb-2">
       <label for="username">Username</label>
       <input
@@ -11,9 +13,15 @@
         placeholder="Username"
         class="form-control"
         required
+        #username="ngModel"
       />
+
+      <small class="text-danger" *ngIf="username.invalid && username.touched">
+        Username is required.
+      </small>
     </div>
 
+    <!-- EMAIL -->
     <div class="mb-2">
       <label for="email">Email</label>
       <input
@@ -23,9 +31,17 @@
         placeholder="Email"
         class="form-control"
         required
+        email
+        #email="ngModel"
       />
+
+      <small class="text-danger" *ngIf="email.touched && email.invalid">
+        <span *ngIf="email.errors?.['required']">Email is required.</span>
+        <span *ngIf="email.errors?.['email']">Enter a valid email.</span>
+      </small>
     </div>
 
+    <!-- PASSWORD -->
     <div class="mb-2">
       <label for="password">Password</label>
       <input
@@ -36,9 +52,26 @@
         placeholder="Password"
         class="form-control"
         required
+        minlength="8"
+        (input)="checkPasswordStrength()"
+        #password="ngModel"
       />
+
+      <small class="text-danger" *ngIf="password.touched && password.invalid">
+        <span *ngIf="password.errors?.['required']">Password is required.</span>
+        <span *ngIf="password.errors?.['minlength']"
+          >Minimum 8 characters required.</span
+        >
+      </small>
+
+      <!-- Password Strength -->
+      <div class="mt-1 password-strength" *ngIf="passwordStrength">
+        Strength:
+        <span [ngClass]="passwordStrengthClass">{{ passwordStrength }}</span>
+      </div>
     </div>
 
+    <!-- CONFIRM PASSWORD -->
     <div class="mb-2">
       <label for="confirmPassword">Confirm Password</label>
       <input
@@ -49,10 +82,23 @@
         placeholder="Confirm Password"
         class="form-control"
         required
+        (input)="validatePasswordMatch()"
+        #confirmPassword="ngModel"
       />
+
+      <small class="text-danger" *ngIf="passwordMismatch && confirmPassword.touched">
+        Passwords do not match.
+      </small>
     </div>
 
-    <button class="btn btn-success w-100" type="submit">Register</button>
+    <!-- SUBMIT BUTTON -->
+    <button
+      class="btn btn-success w-100"
+      type="submit"
+      [disabled]="regForm.invalid || passwordMismatch"
+    >
+      Register
+    </button>
 
     <!-- Backend message -->
     <div *ngIf="errorMessage || successMessage" class="mt-2">
