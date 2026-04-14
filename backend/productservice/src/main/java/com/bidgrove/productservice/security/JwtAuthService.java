@@ -1,5 +1,6 @@
 package com.bidgrove.productservice.security;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Jwts;
@@ -10,7 +11,10 @@ import java.security.Key;
 @Service
 public class JwtAuthService {
 
-    private final String SECRET_KEY = "zasxrdctfvybguhinjlmi5676879jhbe"; // same as auth-service
+ 
+    @Value("${jwt.secret}")
+    private String SECRET_KEY;
+// same as auth-service
 
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
