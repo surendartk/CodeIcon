@@ -60,9 +60,16 @@ public class AuthServiceImpl implements AuthService {
         if (!request.getPassword().equals(request.getConfirmPassword())) {
             return Map.of("error", "Passwords do not match");
         }
+        
+        
 
         Role role = Role.USER;
-
+        
+        String currole=request.getRole();
+        
+        if ("ADMIN".equalsIgnoreCase(currole)){
+        	role=Role.ADMIN;
+        }
         User user = new User();
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
